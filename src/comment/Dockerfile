@@ -27,6 +27,7 @@ RUN apk update \
 && gem install bson_ext  --no-rdoc --no-ri -v '1.5.1' --source 'https://rubygems.org/' \
 && gem install puma --no-rdoc --no-ri -v '3.12.0' --source 'https://rubygems.org/' \
 && gem cleanup \
+#&& pip install –upgrade pip \
 && apk del build-dependencies \
 && rm -rf /usr/lib/ruby/gems/*/cache/* \
           /var/cache/apk/* \
