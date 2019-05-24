@@ -16,6 +16,7 @@ RUN apk update \
            libressl-dev \
 \
 && bundle config build.nokogiri --use-system-libraries \
+#&& python -m pip install –upgrade pip \
 && bundle config git.allow_insecure true \
 && gem install json --no-rdoc --no-ri \
 && gem install bson --no-rdoc --no-ri -v '4.3.0' --source 'https://rubygems.org/' \

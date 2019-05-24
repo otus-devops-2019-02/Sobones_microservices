@@ -44,4 +44,19 @@ Sobones microservices repository
 
 В веб интерфейсе не отображалось pipeline-> enviroment
 
+ДЗ 20 урока
+
+было выполено:
+Prometheus: запуск, конфигурация, знакомство с Web UI
+Мониторинг состояния микросервисов
+Сбор метрик хоста с использованием экспортера
+
+Ссылки на образы 
+
+''''
+sobones/ui:latest
+sobones/post:latest
+sobones/comment:latest
+sobones/prometheus:latest
+''''
 
