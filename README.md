@@ -53,10 +53,29 @@ Prometheus: запуск, конфигурация, знакомство с Web 
 
 Ссылки на образы 
 
-''''
+````
 sobones/ui:latest
 sobones/post:latest
 sobones/comment:latest
 sobones/prometheus:latest
-''''
+````
+
+ДЗ 21 урока
+
+Мониторинг Docker контейнеров
+Визуализация метрик
+Сбор метрик работы приложения и бизнес метрик
+Настройка и проверка алертинга
+
+Ссылки на образы
+
+````
+sobones/ui:latest
+sobones/post:latest
+sobones/comment:latest
+sobones/prometheus:latest
+sobones/alertmanager:latest
+````
+
+
 
