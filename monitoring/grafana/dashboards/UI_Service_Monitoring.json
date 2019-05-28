@@ -85,8 +85,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, 
-sum(rate(ui_request_latency_second_bucket[5m])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(ui_request_latency_second_bucket[5m])) by (le))",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -246,8 +245,7 @@ sum(rate(ui_request_latency_second_bucket[5m])) by (le))",
       "steppedLine": false,
       "targets": [
         {
-          "expr": 
-"rate(ui_request_count{http_status=~\"^[45].*\"}[1m])",
+          "expr": "rate(ui_request_count{http_status=~\"^[45].*\"}[1m])",
           "format": "time_series",
           "hide": true,
           "intervalFactor": 1,
@@ -333,4 +331,3 @@ sum(rate(ui_request_latency_second_bucket[5m])) by (le))",
   "uid": "dqFgHzMZz",
   "version": 4
 }
-
