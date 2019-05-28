@@ -43,8 +43,7 @@
   ],
   "id": null,
   "title": "Docker and system monitoring",
-  "description": "A simple overview of the most important Docker host 
-and container metrics. (cAdvisor/Prometheus)",
+  "description": "A simple overview of the most important Docker host and container metrics. (cAdvisor/Prometheus)",
   "tags": [],
   "style": "dark",
   "timezone": "browser",
@@ -291,8 +290,7 @@ and container metrics. (cAdvisor/Prometheus)",
           },
           "targets": [
             {
-              "expr": "time() - 
-node_boot_time{instance=~\"$server:.*\"}",
+              "expr": "time() - node_boot_time{instance=~\"$server:.*\"}",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "",
@@ -370,8 +368,7 @@ node_boot_time{instance=~\"$server:.*\"}",
           },
           "targets": [
             {
-              "expr": 
-"count(rate(container_last_seen{name=~\".+\"}[$interval]))",
+              "expr": "count(rate(container_last_seen{name=~\".+\"}[$interval]))",
               "intervalFactor": 2,
               "refId": "A",
               "step": 1800
@@ -448,10 +445,7 @@ node_boot_time{instance=~\"$server:.*\"}",
           },
           "targets": [
             {
-              "expr": 
-"min((node_filesystem_size{fstype=~\"xfs|ext4\",instance=~\"$server:.*\"} 
-- node_filesystem_free{fstype=~\"xfs|ext4\",instance=~\"$server:.*\"} )/ 
-node_filesystem_size{fstype=~\"xfs|ext4\",instance=~\"$server:.*\"})",
+              "expr": "min((node_filesystem_size{fstype=~\"xfs|ext4\",instance=~\"$server:.*\"} - node_filesystem_free{fstype=~\"xfs|ext4\",instance=~\"$server:.*\"} )/ node_filesystem_size{fstype=~\"xfs|ext4\",instance=~\"$server:.*\"})",
               "hide": false,
               "intervalFactor": 2,
               "refId": "A",
@@ -529,9 +523,7 @@ node_filesystem_size{fstype=~\"xfs|ext4\",instance=~\"$server:.*\"})",
           },
           "targets": [
             {
-              "expr": "((node_memory_MemTotal{instance=~\"$server:.*\"} 
-- node_memory_MemAvailable{instance=~\"$server:.*\"}) / 
-node_memory_MemTotal{instance=~\"$server:.*\"}) * 100",
+              "expr": "((node_memory_MemTotal{instance=~\"$server:.*\"} - node_memory_MemAvailable{instance=~\"$server:.*\"}) / node_memory_MemTotal{instance=~\"$server:.*\"}) * 100",
               "intervalFactor": 2,
               "refId": "A",
               "step": 1800
@@ -608,8 +600,7 @@ node_memory_MemTotal{instance=~\"$server:.*\"}) * 100",
           },
           "targets": [
             {
-              "expr": "(node_memory_SwapTotal{instance=~'$server:.*'} - 
-node_memory_SwapFree{instance=~'$server:.*'})",
+              "expr": "(node_memory_SwapTotal{instance=~'$server:.*'} - node_memory_SwapFree{instance=~'$server:.*'})",
               "intervalFactor": 2,
               "legendFormat": "",
               "refId": "A",
@@ -687,9 +678,7 @@ node_memory_SwapFree{instance=~'$server:.*'})",
           },
           "targets": [
             {
-              "expr": "node_load1{instance=~\"$server:.*\"} / count 
-by(job, instance)(count by(job, instance, 
-cpu)(node_cpu{instance=~\"$server:.*\"}))",
+              "expr": "node_load1{instance=~\"$server:.*\"} / count by(job, instance)(count by(job, instance, cpu)(node_cpu{instance=~\"$server:.*\"}))",
               "intervalFactor": 2,
               "refId": "A",
               "step": 1800
@@ -754,18 +743,14 @@ cpu)(node_cpu{instance=~\"$server:.*\"}))",
           "steppedLine": false,
           "targets": [
             {
-              "expr": 
-"sum(rate(container_network_receive_bytes_total{id=\"/\"}[$interval])) 
-by (id)",
+              "expr": "sum(rate(container_network_receive_bytes_total{id=\"/\"}[$interval])) by (id)",
               "intervalFactor": 2,
               "legendFormat": "RECEIVED",
               "refId": "A",
               "step": 600
             },
             {
-              "expr": "- 
-sum(rate(container_network_transmit_bytes_total{id=\"/\"}[$interval])) 
-by (id)",
+              "expr": "- sum(rate(container_network_transmit_bytes_total{id=\"/\"}[$interval])) by (id)",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "SENT",
@@ -812,8 +797,7 @@ by (id)",
         },
         {
           "aliasColors": {
-            "{id=\"/\",instance=\"cadvisor:8080\",job=\"prometheus\"}": 
-"#BA43A9"
+            "{id=\"/\",instance=\"cadvisor:8080\",job=\"prometheus\"}": "#BA43A9"
           },
           "bars": false,
           "datasource": "${DS_PROMETHEUS}",
@@ -845,8 +829,7 @@ by (id)",
           "steppedLine": false,
           "targets": [
             {
-              "expr": 
-"sum(rate(container_cpu_system_seconds_total[1m]))",
+              "expr": "sum(rate(container_cpu_system_seconds_total[1m]))",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "a",
@@ -854,8 +837,7 @@ by (id)",
               "step": 120
             },
             {
-              "expr": 
-"sum(rate(container_cpu_system_seconds_total{name=~\".+\"}[1m]))",
+              "expr": "sum(rate(container_cpu_system_seconds_total{name=~\".+\"}[1m]))",
               "hide": true,
               "interval": "",
               "intervalFactor": 2,
@@ -864,8 +846,7 @@ by (id)",
               "step": 10
             },
             {
-              "expr": 
-"sum(rate(container_cpu_system_seconds_total{id=\"/\"}[1m]))",
+              "expr": "sum(rate(container_cpu_system_seconds_total{id=\"/\"}[1m]))",
               "hide": true,
               "interval": "",
               "intervalFactor": 2,
@@ -875,8 +856,7 @@ by (id)",
               "step": 20
             },
             {
-              "expr": "sum(rate(process_cpu_seconds_total[$interval])) * 
-100",
+              "expr": "sum(rate(process_cpu_seconds_total[$interval])) * 100",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -886,10 +866,7 @@ by (id)",
               "step": 600
             },
             {
-              "expr": 
-"sum(rate(container_cpu_system_seconds_total{name=~\".+\"}[1m])) + 
-sum(rate(container_cpu_system_seconds_total{id=\"/\"}[1m])) + 
-sum(rate(process_cpu_seconds_total[1m]))",
+              "expr": "sum(rate(container_cpu_system_seconds_total{name=~\".+\"}[1m])) + sum(rate(container_cpu_system_seconds_total{id=\"/\"}[1m])) + sum(rate(process_cpu_seconds_total[1m]))",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "",
@@ -999,9 +976,7 @@ sum(rate(process_cpu_seconds_total[1m]))",
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_load1{instance=~\"$server:.*\"} / count 
-by(job, instance)(count by(job, instance, 
-cpu)(node_cpu{instance=~\"$server:.*\"}))",
+              "expr": "node_load1{instance=~\"$server:.*\"} / count by(job, instance)(count by(job, instance, cpu)(node_cpu{instance=~\"$server:.*\"}))",
               "intervalFactor": 2,
               "refId": "A",
               "step": 600
@@ -1127,8 +1102,7 @@ cpu)(node_cpu{instance=~\"$server:.*\"}))",
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_filesystem_size{fstype=\"aufs\"} - 
-node_filesystem_free{fstype=\"aufs\"}",
+              "expr": "node_filesystem_size{fstype=\"aufs\"} - node_filesystem_free{fstype=\"aufs\"}",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "Used Disk Space",
@@ -1345,8 +1319,7 @@ node_filesystem_free{fstype=\"aufs\"}",
               "step": 30
             },
             {
-              "expr": "node_memory_MemTotal - (node_memory_Active + 
-node_memory_MemFree + node_memory_Inactive)",
+              "expr": "node_memory_MemTotal - (node_memory_Active + node_memory_MemFree + node_memory_Inactive)",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "Unknown",
@@ -1370,8 +1343,7 @@ node_memory_MemFree + node_memory_Inactive)",
               "step": 30
             },
             {
-              "expr": "node_memory_Inactive + node_memory_MemFree + 
-node_memory_MemAvailable",
+              "expr": "node_memory_Inactive + node_memory_MemFree + node_memory_MemAvailable",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "",
@@ -1458,8 +1430,7 @@ node_memory_MemAvailable",
           "steppedLine": false,
           "targets": [
             {
-              "expr": "-sum(rate(node_disk_bytes_read[$interval])) by 
-(device)",
+              "expr": "-sum(rate(node_disk_bytes_read[$interval])) by (device)",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "OUT on /{{device}}",
@@ -1468,8 +1439,7 @@ node_memory_MemAvailable",
               "step": 600
             },
             {
-              "expr": "sum(rate(node_disk_bytes_written[$interval])) by 
-(device)",
+              "expr": "sum(rate(node_disk_bytes_written[$interval])) by (device)",
               "intervalFactor": 2,
               "legendFormat": "IN on /{{device}}",
               "metric": "",
@@ -1559,17 +1529,14 @@ node_memory_MemAvailable",
           "steppedLine": false,
           "targets": [
             {
-              "expr": 
-"sum(rate(container_network_receive_bytes_total{name=~\".+\"}[$interval])) 
-by (name)",
+              "expr": "sum(rate(container_network_receive_bytes_total{name=~\".+\"}[$interval])) by (name)",
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
               "refId": "A",
               "step": 240
             },
             {
-              "expr": "- 
-rate(container_network_transmit_bytes_total{name=~\".+\"}[$interval])",
+              "expr": "- rate(container_network_transmit_bytes_total{name=~\".+\"}[$interval])",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -1650,17 +1617,14 @@ rate(container_network_transmit_bytes_total{name=~\".+\"}[$interval])",
           "steppedLine": false,
           "targets": [
             {
-              "expr": 
-"sum(rate(container_network_transmit_bytes_total{name=~\".+\"}[$interval])) 
-by (name)",
+              "expr": "sum(rate(container_network_transmit_bytes_total{name=~\".+\"}[$interval])) by (name)",
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
               "refId": "A",
               "step": 240
             },
             {
-              "expr": 
-"rate(container_network_transmit_bytes_total{id=\"/\"}[$interval])",
+              "expr": "rate(container_network_transmit_bytes_total{id=\"/\"}[$interval])",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "",
@@ -1751,9 +1715,7 @@ by (name)",
           "steppedLine": false,
           "targets": [
             {
-              "expr": 
-"sum(rate(container_cpu_usage_seconds_total{name=~\".+\"}[$interval])) 
-by (name) * 100",
+              "expr": "sum(rate(container_cpu_usage_seconds_total{name=~\".+\"}[$interval])) by (name) * 100",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -1844,8 +1806,7 @@ by (name) * 100",
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(container_memory_rss{name=~\".+\"}) by 
-(name)",
+              "expr": "sum(container_memory_rss{name=~\".+\"}) by (name)",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -1931,8 +1892,7 @@ by (name) * 100",
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(container_memory_swap{name=~\".+\"}) by 
-(name)",
+              "expr": "sum(container_memory_swap{name=~\".+\"}) by (name)",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -2036,9 +1996,7 @@ by (name) * 100",
           ],
           "targets": [
             {
-              "expr": 
-"sum(container_spec_memory_limit_bytes{name=~\".+\"} - 
-container_memory_usage_bytes{name=~\".+\"}) by (name) ",
+              "expr": "sum(container_spec_memory_limit_bytes{name=~\".+\"} - container_memory_usage_bytes{name=~\".+\"}) by (name) ",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -2047,8 +2005,7 @@ container_memory_usage_bytes{name=~\".+\"}) by (name) ",
               "step": 240
             },
             {
-              "expr": 
-"sum(container_spec_memory_limit_bytes{name=~\".+\"}) by (name) ",
+              "expr": "sum(container_spec_memory_limit_bytes{name=~\".+\"}) by (name) ",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -2108,10 +2065,7 @@ container_memory_usage_bytes{name=~\".+\"}) by (name) ",
           ],
           "targets": [
             {
-              "expr": "sum(100 - 
-((container_spec_memory_limit_bytes{name=~\".+\"} - 
-container_memory_usage_bytes{name=~\".+\"}) * 100 / 
-container_spec_memory_limit_bytes{name=~\".+\"}) ) by (name) ",
+              "expr": "sum(100 - ((container_spec_memory_limit_bytes{name=~\".+\"} - container_memory_usage_bytes{name=~\".+\"})  * 100 / container_spec_memory_limit_bytes{name=~\".+\"}) ) by (name) ",
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
               "metric": "",
@@ -2119,8 +2073,7 @@ container_spec_memory_limit_bytes{name=~\".+\"}) ) by (name) ",
               "step": 240
             },
             {
-              "expr": 
-"sum(container_spec_memory_limit_bytes{name=~\".+\"}) by (name) ",
+              "expr": "sum(container_spec_memory_limit_bytes{name=~\".+\"}) by (name) ",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -2180,9 +2133,7 @@ container_spec_memory_limit_bytes{name=~\".+\"}) ) by (name) ",
           ],
           "targets": [
             {
-              "expr": 
-"sum(container_spec_memory_limit_bytes{name=~\".+\"} - 
-container_memory_usage_bytes{name=~\".+\"}) by (name) ",
+              "expr": "sum(container_spec_memory_limit_bytes{name=~\".+\"} - container_memory_usage_bytes{name=~\".+\"}) by (name) ",
               "hide": true,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -2191,8 +2142,7 @@ container_memory_usage_bytes{name=~\".+\"}) by (name) ",
               "step": 240
             },
             {
-              "expr": 
-"sum(container_spec_memory_limit_bytes{name=~\".+\"}) by (name) ",
+              "expr": "sum(container_spec_memory_limit_bytes{name=~\".+\"}) by (name) ",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "{{name}}",
@@ -2223,4 +2173,3 @@ container_memory_usage_bytes{name=~\".+\"}) by (name) ",
     }
   ]
 }
-
