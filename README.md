@@ -63,3 +63,8 @@ sobones/alertmanager:latest
 Развернут Kubernetes в GKE
 Запущен reddit в Kubernetes 
 
+ДЗ к занятию 28
+Сделано:
+Написаны Helm Chart для приложения
+Развернут Gitlab в Kubernetes
+Запущены CI/CD конвейеры в Kubernetes
